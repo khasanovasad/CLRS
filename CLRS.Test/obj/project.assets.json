@@ -381,6 +381,16 @@
             "related": ".xml"
           }
         }
+      },
+      "CLRS/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/CLRS.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CLRS.dll": {}
+        }
       }
     }
   },
@@ -975,10 +985,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "CLRS/1.0.0": {
+      "type": "project",
+      "path": "../CLRS/CLRS.csproj",
+      "msbuildProject": "../CLRS/CLRS.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "CLRS >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.5.0",
       "NUnit >= 3.13.3",
       "NUnit.Analyzers >= 3.6.1",
@@ -1020,7 +1036,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Development\\Personal\\CLRS\\CLRS\\CLRS.csproj": {
+              "projectPath": "C:\\Development\\Personal\\CLRS\\CLRS\\CLRS.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
