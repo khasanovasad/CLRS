@@ -1,4 +1,6 @@
-﻿namespace CLRS.LeetCode;
+﻿using System.Text;
+
+namespace CLRS.LeetCode;
 
 public partial class Solution
 {
