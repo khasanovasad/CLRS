@@ -5,32 +5,21 @@ public partial class Solution
 {
     public int MaxProfit(int[] prices)
     {
-        if (prices.Count() < 2)
+        int answer = 0;    
+        int lowestSoFar = Int32.MaxValue;
+        for (int i = 0; i < prices.Length; ++i)
         {
-            return 0;
-        }
-
-        int max = 0;
-        int first = 0;
-        int second = 1;
-
-        while (first < prices.Count() && second < prices.Count())
-        {
-            int diff = prices[second] - prices[first];
-            if (diff <= 0)
+            if (lowestSoFar >= prices[i])
             {
-                first = second;
-                ++second;
+                lowestSoFar = prices[i];
                 continue;
             }
-
-            if (diff > 0 && diff > max)
+            else
             {
-                max = diff;
+                answer = Math.Max(answer, prices[i] - lowestSoFar);
             }
-            ++second;
         }
 
-        return max;
+        return answer;
     }
 }
