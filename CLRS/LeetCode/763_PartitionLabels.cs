@@ -5,30 +5,32 @@ public partial class Solution
 {
     public IList<int> PartitionLabels(string s)
     {
-        // "ababcbacadefegdehijhklij"        
-        // a: 8, b: 5, c: 7, d: 14, e: 16, h: 20, i: 23, k: 21, j: 24
-        var last = new int[26];
-        
-        for (int i = 0; i < s.Length; ++i)
-        {
-            char c = s[i];
-            last[c - 'a'] = i;
-        }
-
+        // "ababcbacadefegdehijhklij"
+        var lastOccurance = new int[26];
         var answer = new List<int>();
 
-        int start = 0, end = 0;
         for (int i = 0; i < s.Length; ++i)
         {
-            char c = s[i];
-            end = Math.Max(end, last[c - 'a']);
+            int index = s[i] - 'a';
+            lastOccurance[index] = i;
+        }
 
-            if (end == i)
+        int left = 0;
+        for (int i = 0; i < s.Length; )
+        {
+            int index = s[i] - 'a';
+            int candidate = lastOccurance[index];
+            while (i <= candidate)
             {
-                answer.Add(end - start + 1);
-                start = i + 1;
+                if (candidate < lastOccurance[s[i] - 'a'])
+                {
+                    candidate = lastOccurance[s[i] - 'a'];
+                }
+                ++i;
             }
-        } 
+            answer.Add(candidate - left + 1);
+            left = candidate + 1;
+        }
 
         return answer;
     }
